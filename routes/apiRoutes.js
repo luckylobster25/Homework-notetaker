@@ -1,11 +1,11 @@
 const api = require('express').Router();
 const { readFromFile, writeToFile, readAndAppend } = require('../helpers/helper');
 const uuid = require('../helpers/uuid');
-// get data from
+// get data from database file that stored user input.
 api.get('/api/notes', (req, res) => {
     readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
 });
-// post data into database file
+// stored user input front-end data into back-end database file
 api.post('/api/notes', (req, res) => {
     const { title, text } = req.body;
     const newNote = {
