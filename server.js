@@ -1,6 +1,6 @@
 const express = require('express');
-const path = require('path');
 const htmlRoute = require('./routes/htmlRoutes');
+const apiRoute = require('./routes/apiRoutes')
 const fs = require('fs');
 
 const PORT = 3001;
@@ -10,7 +10,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static('public'));
-app.use(htmlRoute)
+app.use(htmlRoute);
+app.use(apiRoute);
 
 
 // Listening to PORT
