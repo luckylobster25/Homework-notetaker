@@ -14,6 +14,8 @@ This application is for users to take notes and store notes. User are able to ad
 Application required EXPRESS package from NPM. 
 ## How to use this application:
 To use, just run node service.js. It is an easy-to-use application. 
+Here is the video link on how to use it.  
+[Video](https://watch.screencastify.com/v/fLlLFHdhZ1AAFDnuvV4M)
 ## Contribution:
 contributions to project are welcome. 
 ## Test
