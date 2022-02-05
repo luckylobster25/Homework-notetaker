@@ -1,13 +1,11 @@
 const api = require('express').Router();
 const { readFromFile, writeToFile, readAndAppend } = require('../helpers/helper');
 const uuid = require('../helpers/uuid');
-api.get('/api/notes', (req, res) =>
-    readFromFile('.db/db.json').then((data) =>
-        res.json(JSON.parse(data))
-    )
-        .catch((error) => console.log(error))
-);
-
+// get data from
+api.get('/api/notes', (req, res) => {
+    readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
+});
+// post data into database file
 api.post('/api/notes', (req, res) => {
     const { title, text } = req.body;
     const newNote = {
@@ -18,12 +16,12 @@ api.post('/api/notes', (req, res) => {
     readAndAppend(newNote, './db/db.json');
     res.json(newNote);
 })
-
+// delete route by id, tested and working
 api.delete('/api/notes/:id', (req, res) => {
     const { id } = req.params;
     readFromFile('./db/db.json')
         .then((data) => {
-            data = JSON.parse(data).filter(data => data.id == id);
+            data = JSON.parse(data).filter(data => data.id != id);
             const newData = writeToFile('./db/db.json', data);
             res.status(200).json(newData);
         })
